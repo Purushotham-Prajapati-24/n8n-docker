@@ -1,11 +1,15 @@
-FROM n8nio/n8n
+# minimal, stable, Render-friendly
+FROM n8nio/n8n:latest
 
+# optional timezone
 ENV GENERIC_TIMEZONE=Asia/Kolkata
-ENV N8N_PORT=${PORT}
-ENV N8N_PROTOCOL=https
+
+# n8n listens on 5678 by default. Render reads EXPOSE to route traffic.
 ENV N8N_HOST=0.0.0.0
-ENV WEBHOOK_TUNNEL_URL=https://n8n-thzz.onrender.com
+ENV N8N_PROTOCOL=http
+ENV N8N_PORT=5678
 
-EXPOSE ${PORT}
+EXPOSE 5678
 
+# start n8n
 CMD ["n8n", "start"]
