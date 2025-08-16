@@ -14,6 +14,7 @@ ENV N8N_PORT=5678
 
 # webhook settings (important for advanced workflows)
 ENV N8N_EDITOR_BASE_URL=http://localhost:5678
+
 ENV N8N_PUBLIC_API_DISABLED=false
 
 # database settings (safe defaults, can be overridden in Render Dashboard)
