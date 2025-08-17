@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Upload Study Material</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 700px; margin: 2rem auto; }
+      form { border: 1px solid #ddd; padding: 1rem; border-radius: 12px; }
+      label { display:block; margin:.5rem 0 .25rem; }
+      input[type=file], input[type=text], textarea { width:100%; padding:.5rem; }
+      button { margin-top: 1rem; padding:.6rem 1rem; border:0; border-radius:10px; cursor:pointer; }
+    </style>
+  </head>
+  <body>
+    <h1>Send Study Material</h1>
+    <form method="POST" action="https://YOUR-N8N-DOMAIN/webhook/send-material" enctype="multipart/form-data">
+      <!-- Simple anti-abuse shared secret; we’ll verify it in n8n -->
+      <input type="hidden" name="secret" value="YOUR_SHARED_SECRET" />
+      
+      <label>Subject</label>
+      <input type="text" name="subject" placeholder="e.g., Week 5 Notes" required />
+
+      <label>Message</label>
+      <textarea name="message" rows="6" placeholder="Short message to students..." required></textarea>
+
+      <label>Attachment</label>
+      <!-- The name MUST be 'attachment' so n8n receives binary as binary.attachment -->
+      <input type="file" name="attachment" required />
+
+      <button type="submit">Send to all students</button>
+    </form>
+  </body>
+</html>
